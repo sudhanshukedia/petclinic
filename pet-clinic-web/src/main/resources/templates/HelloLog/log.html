@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<u1>
+    <li th:each ="log :${logs}">
+        We said hello to <span th:text="${log.name}" > </span>
+        at some (timestamp)
+    </li>
+</u1>
+</body>
+</html>
