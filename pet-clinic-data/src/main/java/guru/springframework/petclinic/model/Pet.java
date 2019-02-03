@@ -1,6 +1,6 @@
 package guru.springframework.petclinic.model;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
+import lombok.Builder;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -24,6 +24,19 @@ public class Pet extends BaseEntity {
     @ManyToOne
     @JoinColumn(name="owner_id")
     private Owner owner;
+
+    public Pet(){}
+
+    @Builder
+    public Pet(Long id, String name, PetType petType, LocalDate birthDate, Owner owner, Set<Visit> visits) {
+        super(id);
+        this.name = name;
+        this.petType = petType;
+        this.birthDate = birthDate;
+        this.owner = owner;
+        this.visits = visits;
+    }
+
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy ="pet" )
     private Set<Visit> visits = new HashSet<>();
