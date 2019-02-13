@@ -37,6 +37,13 @@ public class Pet extends BaseEntity {
         this.visits = visits;
     }
 
+    public Pet(String name, PetType petType, LocalDate birtrhDate, Owner owner, Set<Visit> visits){
+        this.name = name;
+        this.petType = petType;
+        this.birthDate = birthDate;
+        this.owner = owner;
+        this.visits = visits;
+    }
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy ="pet" )
     private Set<Visit> visits = new HashSet<>();

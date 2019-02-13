@@ -1,6 +1,5 @@
 package guru.springframework.petclinic.model;
 
-import org.aspectj.weaver.GeneratedReferenceTypeDelegate;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,10 +14,20 @@ public class BaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    public BaseEntity(){}
+
+    public BaseEntity(Long id) {
+        this.id = id ;
+    }
+
     public Long getId() {
         return id;
     }
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public boolean isNew(){
+        return this.id == null;
     }
 }
